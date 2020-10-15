@@ -1,8 +1,14 @@
 #include"labFunctions.h"
-char* uniqueChars(int slovoLength, char* slovo) {
-	char uniquechars[1000];
+int findsize(char* array) {
+	int stringsize = 0;
+	while ((*(array + stringsize) != '\n') || (*(array + stringsize) != 10)) {
+		stringsize++;
+	}
+	return stringsize;
+}
+int uniqueChars(int slovoLength, char* slovo,char* uniquechars) {
 	for (int i = 0; i < 1000; i++) {
-		uniquechars[i] = 0;
+		*(uniquechars+i) = 0;
 	}
 	int unique = 0, count = 0;
 	for (int i = 0; i <= slovoLength; i++) {
@@ -12,13 +18,14 @@ char* uniqueChars(int slovoLength, char* slovo) {
 			}
 		}
 		if (count != 1) {
-			uniquechars[unique] = *(slovo + i);
+			*(uniquechars+unique) = *(slovo + i);
+			
 			unique++;
 		}
 		count = 0;
 	}
-	char* pointer = uniquechars;
-	return pointer;
+	unique--;
+	return unique;
 }
 int charequal(char a, int uniquecharsize, char* uniquechar) {
 	for (int i = 0; i < uniquecharsize; i++) {
@@ -27,34 +34,4 @@ int charequal(char a, int uniquecharsize, char* uniquechar) {
 		}
 	}
 	return -1;
-}
-void charcount(char* word, char* string) {
-	int wordsize = 0;
-	while (*(word + wordsize) != '\n') {
-		wordsize++;
-	}
-	//printf("%d ", wordsize);
-	int stringsize = 0;
-	while (*(string + stringsize) != '\n') {
-		stringsize++;
-	}
-	//printf("%d ", stringsize);
-	char* uniquechar = uniqueChars(wordsize, word);
-	int uniquecharsize = 0;
-	while (*(uniquechar + uniquecharsize) != '\n') {
-		uniquecharsize++;
-	}
-	//printf("%d \n", uniquecharsize);
-	int charcount[1000];
-	for (int i = 0; i < 1000; i++) {
-		charcount[i] = 0;
-	}
-	for (int i = 0; i < stringsize; i++) {
-		if (charequal(*(string + i), uniquecharsize, uniquechar) != -1) {
-			charcount[charequal(*(string + i), uniquecharsize, uniquechar)] += 1;
-		}
-	}
-	for (int i = 0; i < uniquecharsize; i++) {
-		printf("%c: %d\n", *(uniquechar + i), charcount[i]);
-	}
 }

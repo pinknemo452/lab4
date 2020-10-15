@@ -7,8 +7,23 @@ int main() {
 	char string[1000];
 	printf("Enter a word: ");
 	fgets(slovo, 1000, stdin);
-	printf("enter string: ");
+	int wordsize = findsize(slovo);
+	printf("\nenter string: ");
 	fgets(string, 1000, stdin);
-	charcount(slovo,string);
+	int stringsize = findsize(string);
+	char uniquechars[1000];
+	int uniquecharsize = uniqueChars(wordsize, slovo, uniquechars);
+	int charcount[1000];
+	for (int i = 0; i < 1000; i++) {
+		charcount[i] = 0;
+	}
+	for (int i = 0; i < stringsize; i++) {
+		if (charequal(string[i], uniquecharsize, uniquechars) != -1) {
+			charcount[charequal(string[i], uniquecharsize, uniquechars)] += 1;
+		}
+	}
+	for (int i = 0; i < uniquecharsize; i++) {
+		printf("%c: %d\n", uniquechars[i], charcount[i]);
+	}
 	return 0;
 }

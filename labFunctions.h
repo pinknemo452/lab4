@@ -1,5 +1,5 @@
 #pragma once
 #include<stdio.h>
-char* uniqueChars(int slovoLength, char* slovo);
+int uniqueChars(int slovoLength, char* slovo, char* uniquechars);
 int charequal(char a, int uniquecharsize, char* uniquechar);
-void charcount(char* word, char* string);
+int findsize(char* array);
