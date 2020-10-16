@@ -8,7 +8,7 @@ int main() {
 	printf("Enter a word: ");
 	fgets(slovo, 1000, stdin);
 	int wordsize = findsize(slovo);
-	printf("\nenter string: ");
+	printf("enter string: ");
 	fgets(string, 1000, stdin);
 	int stringsize = findsize(string);
 	char uniquechars[1000];

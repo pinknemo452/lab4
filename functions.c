@@ -1,12 +1,12 @@
 #include"labFunctions.h"
 int findsize(char* array) {
 	int stringsize = 0;
-	while ((*(array + stringsize) != '\n') || (*(array + stringsize) != 10)) {
+	while ((*(array + stringsize) != '\0')) {
 		stringsize++;
 	}
-	return stringsize;
+	return stringsize-1;
 }
-int uniqueChars(int slovoLength, char* slovo,char* uniquechars) {
+int uniqueChars(int slovoLength, char* slovo, char* uniquechars) {
 	for (int i = 0; i < 1000; i++) {
 		*(uniquechars+i) = 0;
 	}
